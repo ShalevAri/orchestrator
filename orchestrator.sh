@@ -49,7 +49,7 @@ fi
 if [ -d "$TARGET_DIR" ]; then
     if [ -d "$TEMP_DIR/dot_opencode_diff" ]; then
         note "Checking for local customizations..."
-        
+
         if diff -rq "$TARGET_DIR" "$TEMP_DIR/dot_opencode_diff" > /dev/null 2>&1; then
             note "No customizations detected. Auto-upgrading..."
             rm -rf "$TARGET_DIR"
@@ -63,7 +63,7 @@ if [ -d "$TARGET_DIR" ]; then
             echo "  3) Backup to .opencode.bak and install new version"
             echo ""
             read -rp "Enter choice [1-3]: " choice
-            
+
             case $choice in
                 1)
                     note "Installation aborted. No changes were made."
@@ -99,7 +99,7 @@ if [ -d "$TARGET_DIR" ]; then
         echo "  3) Backup to .opencode.bak and install new version"
         echo ""
         read -rp "Enter choice [1-3]: " choice
-        
+
         case $choice in
             1)
                 note "Installation aborted. No changes were made."
@@ -134,5 +134,3 @@ cp -r "$TEMP_DIR/dot_opencode" "$TARGET_DIR" || {
 }
 
 success "Orchestrator setup complete!"
-success "Configuration installed to: $TARGET_DIR"
-note "You can now safely delete this script: rm orchestrator.sh"
