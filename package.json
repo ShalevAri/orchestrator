@@ -1,0 +1,22 @@
+{
+  "name": "orchestrator",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShalevAri/orchestrator.git"
+  },
+  "author": {
+    "name": "Shalev Ari"
+  },
+  "scripts": {
+    "prettier": "prettier . --write --cache --cache-strategy=content --cache-location=.prettiercache",
+    "prettier:check": "prettier . --check --cache --cache-strategy=content --cache-location=.prettiercache"
+  },
+  "dependencies": {
+    "prettier": "^3.6.2",
+    "prettier-plugin-sh": "^0.18.0"
+  }
+}
