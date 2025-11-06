@@ -27,9 +27,8 @@ Each subagent is optimized for a particular type of task, ensuring high-quality 
 
 ## Quality Assurance
 
-Every agent is optimized through manual testing and iteration.<br/>
-Each prompt goes through many revisions to ensure reliable performance.<br/>
-Agents are paired with specific models selected for their strengths in each domain, balancing quality with cost-efficiency.
+Agents are manually tested and refined for reliable performance.<br/>
+Each agent is paired with models optimized for their domain, balancing quality and cost-efficiency.
 
 ## Getting Started
 
