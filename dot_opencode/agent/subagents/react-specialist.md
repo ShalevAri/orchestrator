@@ -67,7 +67,7 @@ Server-side rendering:
 - Server components
 - Streaming SSR
 - Progressive enhancement
-- SEO optimization
+- Search Engine Optimization
 - Data fetching
 - Hydration strategies
 
