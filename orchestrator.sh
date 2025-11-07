@@ -16,7 +16,7 @@ success() { echo -e "${GREEN}$*${NC}"; }
 GITHUB_USER="ShalevAri"
 GITHUB_REPO="orchestrator"
 REPO_URL="https://github.com/${GITHUB_USER}/${GITHUB_REPO}.git"
-GITHUB_TAG="v2.0.0"
+GITHUB_TAG="v2.0.1"
 
 TARGET_DIR="${PWD}/.opencode"
 TEMP_DIR=$(mktemp -d)
@@ -90,7 +90,7 @@ cp -r "$TEMP_DIR/dot_opencode" "$TARGET_DIR" || {
 
 if [ -f "$TEMP_DIR/opencode.preset.json" ]; then
     note "Setting up opencode.json file..."
-    cp "$TEMP_DIR/opencode.preset.json" "${TARGET_DIR}/opencode.json" || {
+    cp "$TEMP_DIR/opencode.preset.json" "${PWD}/opencode.json" || {
         warning "Failed to setup opencode.json"
     }
 else
