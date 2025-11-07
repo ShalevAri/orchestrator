@@ -28,6 +28,38 @@
 - Agents must validate inputs and provide clear error messages
 - Use permissions to deny dangerous operations (rm -rf, sudo, .env modifications)
 
+## Agent List
+
+### Primary
+
+- Orchestrator
+
+### Subagents
+
+#### Core
+
+- Context Manager
+- Planner
+- Reviewer
+- Task Manager
+- Tester
+
+#### Lang
+
+- React Specialist
+- Rust Engineer
+
+#### Specialists
+
+- Designer
+- Frontend Developer
+- React Native Specialist
+
+#### Util
+
+- Commentor
+- Jujutsu
+
 ## Diff checking
 
 - `dot_opencode_diff` directory used to check for user customizations

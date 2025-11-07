@@ -132,7 +132,6 @@ N/A
 
 ### In Rotation
 
-- [ ] Add agent list in AGENTS.md
 - [ ] Add CONTRIBUTING.md
 
 ### In Progress
@@ -146,6 +145,7 @@ N/A
 - [x] Improved Rust subagent
 - [x] Better agent organization
 - [x] Update README agent list
+- [x] Add agent list in AGENTS.md
 
 ## License
 
