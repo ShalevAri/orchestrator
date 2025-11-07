@@ -47,13 +47,11 @@ if [ ! -d "$TEMP_DIR/dot_opencode" ]; then
 fi
 
 if [ -d "$TARGET_DIR" ]; then
-    warning "Existing .opencode directory found!"
-    echo ""
-    echo "Installing Orchestrator will override your existing .opencode directory."
-    echo "Choose an option:"
-    echo "  1) Abort (keep current setup)"
-    echo "  2) Override (replace with Orchestrator)"
-    echo "  3) Backup to .opencode.bak and install Orchestrator"
+    warning "Installing/updating Orchestrator will override your existing .opencode directory. This is expected behavior."
+    echo "Please choose an option:"
+    echo "  1) Abort"
+    echo "  2) Override"
+    echo "  3) Backup to .opencode.bak and install"
     echo ""
     read -rp "Enter choice [1-3]: " choice
 
