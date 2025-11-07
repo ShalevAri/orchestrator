@@ -124,13 +124,14 @@ N/A
 
 ### In Progress
 
-- [ ] New React subagent
-- [ ] New React Native subagent
-- [ ] Improved Rust subagent
+N/A
 
 ### Done
 
 - [x] v1.0.0
+- [x] New React subagent
+- [x] New React Native subagent
+- [x] Improved Rust subagent
 
 ## License
 
