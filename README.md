@@ -116,15 +116,17 @@ More agents coming soon.
 
 ### Planned
 
-- [ ] Better agent organization
+N/A
 
 ### In Rotation
 
-N/A
+- [ ] Update README agent list
+- [ ] Add agent list in AGENTS.md
+- [ ] Add CONTRIBUTING.md
 
 ### In Progress
 
-N/A
+- [ ] Better agent organization
 
 ### Done
 
