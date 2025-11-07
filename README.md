@@ -108,6 +108,30 @@ Orchestrator includes the following agents:
 
 More agents coming soon.
 
+## Roadmap
+
+### Maybe
+
+- [ ] Choose model providers during installation
+
+### Planned
+
+N/A
+
+### In Rotation
+
+N/A
+
+### In Progress
+
+- [ ] New React subagent
+- [ ] New React Native subagent
+- [ ] Improved Rust subagent
+
+### Done
+
+- [x] v1.0.0
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
