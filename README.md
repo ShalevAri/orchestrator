@@ -135,7 +135,7 @@ N/A
 
 ### In Rotation
 
-- [ ] Add CONTRIBUTING.md
+- [ ] Pre-configured `opencode.json` file
 
 ### In Progress
 
@@ -148,6 +148,7 @@ N/A
 - [x] Better agent organization
 - [x] Update README agent list
 - [x] Add agent list in AGENTS.md
+- [x] Add CONTRIBUTING.md
 
 ## License
 
