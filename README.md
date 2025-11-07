@@ -1,6 +1,6 @@
 # Orchestrator
 
-An AI agent orchestration system that delegates tasks to specialized subagents for optimal results while maintaining cost-efficiency.
+An AI agent orchestration system for OpenCode that delegates tasks to specialized subagents for optimal results while maintaining cost-efficiency.
 
 ### Architecture
 
