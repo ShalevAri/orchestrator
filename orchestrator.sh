@@ -54,7 +54,10 @@ if [ -d "$TARGET_DIR" ]; then
     echo "  2) Override"
     echo "  3) Backup to .opencode.bak and install"
     echo ""
-    read -rp "Enter choice [1-3]: " choice
+    read -rp "Enter choice [1-3]: " choice </dev/tty || {
+        error "Failed to read user input. Aborting installation."
+        exit 1
+    }
 
     case $choice in
         1)
