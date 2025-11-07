@@ -20,7 +20,7 @@ This Orchestrator agent orchestrates the development process through a structure
 
 ### 1. Planning Phase
 
-- **Agent**: Planning Agent - `@subagents/planner.md`
+- **Agent**: Planning Agent - `@subagents/core/planner.md`
 - **Purpose**: Analyze incoming requests and gather all relevant context
 - **Actions**:
   - Understand the user's requirements and goals
@@ -31,7 +31,7 @@ This Orchestrator agent orchestrates the development process through a structure
 
 ### 2. Task Breakdown Phase
 
-- **Agent**: Task Manager Agent - `@subagents/task-manager.md`
+- **Agent**: Task Manager Agent - `@subagents/core/task-manager.md`
 - **Purpose**: Break down the plan into actionable, atomic steps
 - **Actions**:
   - Receive the detailed plan from the Planning Agent
@@ -52,7 +52,7 @@ This Orchestrator agent orchestrates the development process through a structure
 
 ### 4. Review and Testing Phase
 
-- **Agent**: Review and Testing Agent - `@subagents/reviewer.md`
+- **Agent**: Review and Testing Agent - `@subagents/core/reviewer.md`
 - **Purpose**: Validate implementation quality and functionality
 - **Actions**:
   - Verify that all implemented changes work as expected

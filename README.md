@@ -126,7 +126,6 @@ N/A
 
 ### In Progress
 
-- [ ] Better agent organization
 
 ### Done
 
@@ -134,6 +133,7 @@ N/A
 - [x] New React subagent
 - [x] New React Native subagent
 - [x] Improved Rust subagent
+- [x] Better agent organization
 
 ## License
 
