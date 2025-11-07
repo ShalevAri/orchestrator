@@ -90,23 +90,35 @@ Orchestrator uses a tag-based release workflow:
 
 Orchestrator includes the following agents:
 
-### Primary Agents
+### Primary
 
-- **Orchestrator** - Main agent that analyzes requests and delegates tasks to subagents intelligently
+- Orchestrator
 
-### Specialized Subagents
+### Subagents
 
-- **Planner** - Analyzes requests and gathers necessary context
-- **Task Manager** - Breaks down complex features into manageable subtasks
-- **Reviewer** - Performs thorough code audits and quality checks
-- **Tester** - Authors tests following TDD principles
-- **Rustacean** - Expert in Rust programming and best practices
-- **Frontend Developer** - Specializes in React and frontend development
-- **Designer** - Creates beautiful, user-friendly UI designs
-- **Commentor** - Enhances code documentation and comments
-- **Jujutsu** - Manages version control using Jujutsu VCS
+#### Core
 
-More agents coming soon.
+- Context Manager
+- Planner
+- Reviewer
+- Task Manager
+- Tester
+
+#### Lang
+
+- React Specialist
+- Rust Engineer
+
+#### Specialists
+
+- Designer
+- Frontend Developer
+- React Native Specialist
+
+#### Util
+
+- Commentor
+- Jujutsu
 
 ## Roadmap
 
@@ -120,7 +132,6 @@ N/A
 
 ### In Rotation
 
-- [ ] Update README agent list
 - [ ] Add agent list in AGENTS.md
 - [ ] Add CONTRIBUTING.md
 
@@ -134,6 +145,7 @@ N/A
 - [x] New React Native subagent
 - [x] Improved Rust subagent
 - [x] Better agent organization
+- [x] Update README agent list
 
 ## License
 
