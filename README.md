@@ -38,6 +38,9 @@ Each agent is paired with models optimized for their domain, balancing quality a
 
 ### Installation
 
+> [!WARNING]
+> **Installing/updating the Orchestrator script will override your existing `.opencode` directory.**
+
 > [!NOTE]
 > It's a good practice to verify scripts before running them
 
