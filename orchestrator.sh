@@ -47,7 +47,8 @@ if [ ! -d "$TEMP_DIR/dot_opencode" ]; then
 fi
 
 if [ -d "$TARGET_DIR" ]; then
-    warning "Installing/updating Orchestrator will override your existing .opencode directory. This is expected behavior."
+    warning "Installing/updating Orchestrator will override your existing .opencode directory and opencode.json file."
+    warning "This is expected behavior."
     echo "Please choose an option:"
     echo "  1) Abort"
     echo "  2) Override"
@@ -81,10 +82,19 @@ if [ -d "$TARGET_DIR" ]; then
     esac
 fi
 
-note "Copying files to .opencode directory..."
+note "Setting up .opencode directory..."
 cp -r "$TEMP_DIR/dot_opencode" "$TARGET_DIR" || {
-    error "Failed to copy files"
+    error "Failed to setup .opencode directory"
     exit 1
 }
+
+if [ -f "$TEMP_DIR/opencode.preset.json" ]; then
+    note "Setting up opencode.json file..."
+    cp "$TEMP_DIR/opencode.preset.json" "${TARGET_DIR}/opencode.json" || {
+        warning "Failed to setup opencode.json"
+    }
+else
+    warning "opencode.json preset file was not found in repository"
+fi
 
 success "Orchestrator setup complete!"
