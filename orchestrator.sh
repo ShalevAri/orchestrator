@@ -16,7 +16,7 @@ success() { echo -e "${GREEN}$*${NC}"; }
 GITHUB_USER="ShalevAri"
 GITHUB_REPO="orchestrator"
 REPO_URL="https://github.com/${GITHUB_USER}/${GITHUB_REPO}.git"
-GITHUB_TAG="v2.0.2"
+GITHUB_TAG="v2.0.3"
 
 TARGET_DIR="${PWD}/.opencode"
 TEMP_DIR=$(mktemp -d)
@@ -54,10 +54,8 @@ if [ -d "$TARGET_DIR" ]; then
     echo "  2) Override"
     echo "  3) Backup to .opencode.bak and install"
     echo ""
-    read -rp "Enter choice [1-3]: " choice </dev/tty || {
-        error "Failed to read user input. Aborting installation."
-        exit 1
-    }
+    
+    read -rp "Enter choice [1-3]: " choice
 
     case $choice in
         1)

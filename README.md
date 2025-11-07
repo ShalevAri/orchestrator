@@ -39,13 +39,16 @@ Each agent is paired with models optimized for their domain, balancing quality a
 ### Installation
 
 > [!WARNING]
-> **Installing/updating the Orchestrator script will override your existing `.opencode` directory.**
+> **Installing/updating the Orchestrator script will override your existing `.opencode` directory and opencode.json file.**
 
 > [!NOTE]
 > It's a good practice to verify scripts before running them
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ShalevAri/orchestrator/main/orchestrator.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ShalevAri/orchestrator/main/orchestrator.sh -o orchestrator.sh
+chmod +x orchestrator.sh
+./orchestrator.sh
+rm orchestrator.sh
 ```
 
 The installation script will install the latest tagged release into your project's `.opencode` directory.
