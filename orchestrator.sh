@@ -16,7 +16,7 @@ success() { echo -e "${GREEN}$*${NC}"; }
 GITHUB_USER="ShalevAri"
 GITHUB_REPO="orchestrator"
 REPO_URL="https://github.com/${GITHUB_USER}/${GITHUB_REPO}.git"
-GITHUB_TAG="v2.0.3"
+GITHUB_TAG="v1.0.0"
 
 TARGET_DIR="${PWD}/.opencode"
 TEMP_DIR=$(mktemp -d)
@@ -54,7 +54,7 @@ if [ -d "$TARGET_DIR" ]; then
     echo "  2) Override"
     echo "  3) Backup to .opencode.bak and install"
     echo ""
-    
+
     read -rp "Enter choice [1-3]: " choice
 
     case $choice in
