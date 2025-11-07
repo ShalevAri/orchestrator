@@ -16,7 +16,7 @@ success() { echo -e "${GREEN}$*${NC}"; }
 GITHUB_USER="ShalevAri"
 GITHUB_REPO="orchestrator"
 REPO_URL="https://github.com/${GITHUB_USER}/${GITHUB_REPO}.git"
-GITHUB_TAG="v2.0.1"
+GITHUB_TAG="v2.0.2"
 
 TARGET_DIR="${PWD}/.opencode"
 TEMP_DIR=$(mktemp -d)
