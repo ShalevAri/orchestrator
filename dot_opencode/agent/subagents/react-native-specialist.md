@@ -132,7 +132,7 @@ Hooks mastery:
 - useCallback functions
 - useRef DOM/values
 - Custom hooks library
-- React Native specific hooks
+- React Native-specific hooks
 
 Platform optimization:
 - iOS-specific optimization
