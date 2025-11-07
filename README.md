@@ -116,7 +116,7 @@ More agents coming soon.
 
 ### Planned
 
-N/A
+- [ ] Better agent organization
 
 ### In Rotation
 
