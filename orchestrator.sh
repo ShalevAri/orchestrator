@@ -11,10 +11,10 @@ readonly NC='\033[0m'
 readonly GITHUB_USER="ShalevAri"
 readonly GITHUB_REPO="orchestrator"
 readonly REPO_URL="https://github.com/${GITHUB_USER}/${GITHUB_REPO}.git"
-readonly GITHUB_TAG="v1.0.0"
+readonly GITHUB_TAG="${ORCHESTRATOR_VERSION:-v1.0.0}"
 
 readonly TARGET_DIR="${PWD}/.opencode"
-readonly TEMP_DIR=$(mktemp -d)
+readonly TEMP_DIR=$(mktemp -d) || { echo -e "${RED}ERR: Failed to create temp directory${NC}"; exit 1; }
 
 error() { echo -e "${RED}ERR: $*${NC}"; }
 warning() { echo -e "${YELLOW}WARNING: $*${NC}"; }
@@ -55,7 +55,14 @@ prompt_user_choice() {
   echo ""
   
   read -rp "Enter choice [1-${#choices[@]}]: " choice
-  echo "${choice:-$default_choice}"
+  choice="${choice:-$default_choice}"
+  
+  if ! [[ "$choice" =~ ^[0-9]+$ ]] || [ "$choice" -lt 1 ] || [ "$choice" -gt "${#choices[@]}" ]; then
+    warning "Invalid choice '$choice'. Using default: $default_choice"
+    echo "$default_choice"
+  else
+    echo "$choice"
+  fi
 }
 
 handle_existing_directory() {
@@ -63,7 +70,7 @@ handle_existing_directory() {
     return 0
   fi
   
-  warning "Installing/updating Orchestrator will override your existing .opencode directory and opencode.json file."
+  warning "Installing/updating Orchestrator will override your existing .opencode directory."
   warning "This is expected behavior."
   
   local options=("Abort" "Override" "Backup to .opencode.bak and install")
@@ -124,7 +131,7 @@ select_provider() {
   
   local choice=$(prompt_user_choice "Select provider for $model_name:" options)
   
-  if [ "$choice" -ge 1 ] && [ "$choice" -le "${#providers[@]}" ]; then
+  if [[ "$choice" =~ ^[0-9]+$ ]] && [ "$choice" -ge 1 ] && [ "$choice" -le "${#providers[@]}" ]; then
     echo "${providers[$((choice - 1))]}"
   else
     warning "Invalid choice. Using $default_provider."
@@ -184,12 +191,14 @@ configure_provider_mode() {
   case $choice in
     1)
       note "Using OpenCode Zen provider for all models..."
+      update_model_providers "opencode/" "opencode/" "opencode/" "opencode/"
       ;;
     2)
       configure_per_model_providers
       ;;
     *)
       warning "Invalid choice. Using OpenCode Zen for all models (default)."
+      update_model_providers "opencode/" "opencode/" "opencode/" "opencode/"
       ;;
   esac
 }
@@ -210,23 +219,62 @@ update_model_providers() {
   
   note "Updating model providers..."
   
-  find "$TARGET_DIR/agent" -name "*.md" -type f | while read -r agent_file; do
+  if [ ! -d "$TARGET_DIR/agent" ]; then
+    error "Agent directory not found at $TARGET_DIR/agent"
+    exit 1
+  fi
+  
+  local file_count=0
+  while IFS= read -r agent_file; do
+    ((file_count++))
     if [[ "$OSTYPE" == "darwin"* ]]; then
-      sed -i '' "s|^model: opencode/claude-|model: ${claude_prefix}claude-|g" "$agent_file"
+      sed -i '' "s|^model: opencode/claude-|model: ${claude_prefix}claude-|g" "$agent_file" || {
+        warning "Failed to update $agent_file"
+        continue
+      }
       sed -i '' "s|^model: opencode/gpt-|model: ${gpt_prefix}gpt-|g" "$agent_file"
       sed -i '' "s|^model: opencode/glm-|model: ${glm_prefix}glm-|g" "$agent_file"
       sed -i '' "s|^model: opencode/qwen|model: ${qwen_prefix}qwen|g" "$agent_file"
     else
-      sed -i "s|^model: opencode/claude-|model: ${claude_prefix}claude-|g" "$agent_file"
+      sed -i "s|^model: opencode/claude-|model: ${claude_prefix}claude-|g" "$agent_file" || {
+        warning "Failed to update $agent_file"
+        continue
+      }
       sed -i "s|^model: opencode/gpt-|model: ${gpt_prefix}gpt-|g" "$agent_file"
       sed -i "s|^model: opencode/glm-|model: ${glm_prefix}glm-|g" "$agent_file"
       sed -i "s|^model: opencode/qwen|model: ${qwen_prefix}qwen|g" "$agent_file"
     fi
-  done
+  done < <(find "$TARGET_DIR/agent" -name "*.md" -type f)
+  
+  if [ "$file_count" -eq 0 ]; then
+    warning "No agent files found to update"
+  else
+    success "Updated $file_count agent file(s)"
+  fi
 }
 
 copy_opencode_preset() {
   if [ -f "$TEMP_DIR/opencode.preset.json" ]; then
+    if [ -f "${PWD}/opencode.json" ]; then
+      warning "opencode.json already exists in this directory."
+      local options=("Skip (keep existing)" "Override with preset")
+      local choice=$(prompt_user_choice "What would you like to do?" options)
+      
+      case $choice in
+        1)
+          note "Keeping existing opencode.json file."
+          return 0
+          ;;
+        2)
+          note "Overriding opencode.json with preset..."
+          ;;
+        *)
+          warning "Invalid choice. Keeping existing opencode.json file."
+          return 0
+          ;;
+      esac
+    fi
+    
     note "Setting up opencode.json file..."
     cp "$TEMP_DIR/opencode.preset.json" "${PWD}/opencode.json" || {
       warning "Failed to setup opencode.json"
