@@ -83,11 +83,52 @@ if [ -d "$TARGET_DIR" ]; then
     esac
 fi
 
+echo ""
+echo "Select your preferred model provider:"
+echo "  1) OpenCode Zen (default)"
+echo "  2) Anthropic"
+echo "  3) Other (specify manually)"
+echo ""
+
+read -rp "Enter choice [1-3]: " provider_choice
+
+case $provider_choice in
+    1)
+        note "Using OpenCode Zen provider..."
+        PROVIDER_PREFIX="opencode/"
+        ;;
+    2)
+        note "Using Anthropic provider..."
+        PROVIDER_PREFIX="anthropic/"
+        ;;
+    3)
+        note "Using custom provider..."
+        read -rp "Enter provider prefix (e.g., 'custom/' or leave empty for none): " custom_prefix
+        PROVIDER_PREFIX="$custom_prefix"
+        ;;
+    *)
+        error "Invalid choice. Defaulting to OpenCode Zen."
+        PROVIDER_PREFIX="opencode/"
+        ;;
+esac
+
 note "Setting up .opencode directory..."
 cp -r "$TEMP_DIR/dot_opencode" "$TARGET_DIR" || {
     error "Failed to setup .opencode directory"
     exit 1
 }
+
+if [ "$PROVIDER_PREFIX" != "opencode/" ]; then
+    note "Updating model providers to use: ${PROVIDER_PREFIX}"
+    find "$TARGET_DIR/agent" -name "*.md" -type f | while read -r agent_file; do
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            sed -i '' "s|^model: opencode/|model: ${PROVIDER_PREFIX}|g" "$agent_file"
+        else
+            sed -i "s|^model: opencode/|model: ${PROVIDER_PREFIX}|g" "$agent_file"
+        fi
+    done
+    success "Updated all agent configurations to use ${PROVIDER_PREFIX}"
+fi
 
 if [ -f "$TEMP_DIR/opencode.preset.json" ]; then
     note "Setting up opencode.json file..."
