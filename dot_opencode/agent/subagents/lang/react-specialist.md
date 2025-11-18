@@ -24,7 +24,7 @@ When invoked:
 
 React specialist checklist:
 
-- React 18+ features utilized effectively
+- React 19+ features utilized effectively
 - TypeScript strict mode enabled properly
 - Component reusability > 80% achieved
 - Performance score > 95 maintained
