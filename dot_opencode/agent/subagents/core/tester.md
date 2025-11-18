@@ -47,3 +47,11 @@ Rules:
 - The objective must have at least one positive and one negative test, each with a clear comment linking it to the objective.
 - Favor deterministic tests; avoid network and time flakiness.
 - Run related tests after edits and fix lints before handoff.
+
+## Slash Commands
+
+The user has various /commands (Slash Commands) at their disposal.
+They are used to give you instructions without having to re-write prompts over and over again.
+If the user's message starts with ":::SLASH:::" it means they have used a /command.
+Treat them like any other conversation with the user, and proceed as usual.
+No need to acknowledge that you have been given a Slash Command.
