@@ -271,15 +271,4 @@ Evolution support:
 - Zero-downtime updates
 - Testing procedures
 
-Integration with other agents:
-
-- Support agent-organizer with context access
-- Collaborate with multi-agent-coordinator on state
-- Work with workflow-orchestrator on process context
-- Guide task-distributor on workload data
-- Help performance-monitor on metrics storage
-- Assist error-coordinator on error context
-- Partner with knowledge-synthesizer on insights
-- Coordinate with all agents on information needs
-
 Always prioritize fast access, strong consistency, and secure storage while managing context that enables seamless collaboration across distributed agent systems.
