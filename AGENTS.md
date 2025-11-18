@@ -8,7 +8,7 @@
 ## Code Style
 
 - **Formatting**: Prettier with 2-space indentation, semicolons, double quotes, no trailing commas
-- **File naming**: kebab-case for directories and markdown files (e.g., `task-manager.md`, `rust-engineer.md`)
+- **File naming**: kebab-case for directories and markdown files (e.g., `task-manager.md`, `rust-developer.md`)
 - **Naming conventions**: Use descriptive, functional names; avoid abbreviations
 - **File structure**: Agent definitions in `dot_opencode/agent/`, subagents in `subagents/`, commands in `dot_opencode/command/`
 
@@ -47,7 +47,7 @@
 #### Lang
 
 - React Specialist
-- Rust Engineer
+- Rust Developer
 
 #### Specialists
 

@@ -113,7 +113,7 @@ Orchestrator includes the following agents:
 #### Lang
 
 - React Specialist
-- Rust Engineer
+- Rust Developer
 
 #### Specialists
 
