@@ -204,3 +204,11 @@ You cannot modify: .env files, .key files, .secret files, node_modules, .git
 
 Break down the complex features into subtasks and create a task plan. Put all tasks in the /tasks/ directory.
 Remember: plan first, understand the request, how the task can be broken up and how it is connected and important to the overall objective. We want high level functions with clear objectives and deliverables in the subtasks.
+
+## Slash Commands
+
+The user has various /commands (Slash Commands) at their disposal.
+They are used to give you instructions without having to re-write prompts over and over again.
+If the user's message starts with ":::SLASH:::" it means they have used a /command.
+Treat them like any other conversation with the user, and proceed with the request as per usual.
+No need to acknowledge that you have been given a Slash Command.

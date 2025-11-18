@@ -151,3 +151,11 @@ jj op restore <operation-id>  # Restore to specific operation
 - Run `jj log` frequently to visualize commit graph
 - Jujutsu works alongside Git - `.git/` directory is still present (`jj git init --colocate`)
 - Change IDs are stable across amendments (unlike Git commit hashes)
+
+## Slash Commands
+
+The user has various /commands (Slash Commands) at their disposal.
+They are used to give you instructions without having to re-write prompts over and over again.
+If the user's message starts with ":::SLASH:::" it means they have used a /command.
+Treat them like any other conversation with the user, and proceed with the request as per usual.
+No need to acknowledge that you have been given a Slash Command.
