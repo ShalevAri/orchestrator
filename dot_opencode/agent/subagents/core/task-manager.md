@@ -4,13 +4,12 @@ mode: subagent
 model: opencode/claude-sonnet-4-5
 temperature: 0.1
 tools:
-  read: true
-  edit: true
-  write: true
-  grep: true
-  glob: true
   bash: false
-  patch: true
+  edit: true
+  glob: true
+  grep: true
+  read: true
+  write: true
 permissions:
   bash:
     "*": "deny"
