@@ -2,6 +2,8 @@
 description: Update dependencies
 ---
 
+:::SLASH:::
+
 Check for outdated dependencies, and update them safely.
 Run tests after updates to ensure compatibility.
 Highlight any changes that require attention.
