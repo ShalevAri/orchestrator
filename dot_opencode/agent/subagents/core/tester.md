@@ -1,7 +1,7 @@
 ---
 description: Test Agent specializing in creating tests and Test Driven Development
 mode: subagent
-model: opencode/glm-4.6
+model: opencode/gemini-3-pro
 temperature: 0.1
 tools:
   read: true

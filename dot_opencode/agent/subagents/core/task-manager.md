@@ -1,7 +1,7 @@
 ---
 description: Task Manager Agent specializing in breaking down complex features into small, verifiable subtasks
 mode: subagent
-model: opencode/claude-sonnet-4-5
+model: opencode/kimi-k2-thinking-turbo
 temperature: 0.1
 tools:
   bash: false

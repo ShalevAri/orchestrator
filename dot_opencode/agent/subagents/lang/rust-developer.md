@@ -1,7 +1,7 @@
 ---
 description: Expert Rust developer specializing in systems programming, memory safety, and zero-cost abstractions.
 mode: subagent
-model: opencode/glm-4.6
+model: opencode/claude-sonnet-4-5
 temperature: 0.2
 tools:
   bash: true

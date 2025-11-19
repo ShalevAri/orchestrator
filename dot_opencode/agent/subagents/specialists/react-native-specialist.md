@@ -1,7 +1,7 @@
 ---
 description: Expert React Native specialist mastering mobile development with Expo and native patterns.
 mode: subagent
-model: opencode/claude-haiku-4-5
+model: opencode/gemini-3-pro
 temperature: 0.2
 tools:
   bash: true

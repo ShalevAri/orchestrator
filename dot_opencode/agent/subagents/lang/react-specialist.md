@@ -1,7 +1,7 @@
 ---
 description: Expert react specialist mastering React 19+ with modern patterns and ecosystem.
 mode: subagent
-model: opencode/claude-haiku-4-5
+model: opencode/gemini-3-pro
 temperature: 0.2
 tools:
   bash: true

@@ -1,7 +1,7 @@
 ---
 description: Planner Agent specializing in analyzing requests and gathering context
 mode: subagent
-model: opencode/claude-sonnet-4-5
+model: opencode/kimi-k2-thinking-turbo
 temperature: 0.1
 tools:
   read: true

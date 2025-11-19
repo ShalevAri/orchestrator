@@ -1,7 +1,7 @@
 ---
 description: Reviewer Agent
 mode: subagent
-model: opencode/claude-sonnet-4-5
+model: opencode/gemini-3-pro
 temperature: 0.2
 tools:
   bash: true

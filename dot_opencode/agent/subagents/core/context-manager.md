@@ -1,7 +1,7 @@
 ---
 description: Expert context manager specializing in information storage, retrieval, and synchronization across multi-agent systems. Masters state management, version control, and data lifecycle with focus on ensuring consistency, accessibility, and performance at scale.
 mode: subagent
-model: opencode/glm-4.6
+model: opencode/gemini-3-pro
 temperature: 0.2
 tools:
   edit: true

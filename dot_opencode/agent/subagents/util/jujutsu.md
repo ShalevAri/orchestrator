@@ -1,7 +1,7 @@
 ---
 description: Jujutsu Version Control Agent
 mode: subagent
-model: opencode/qwen3-coder
+model: opencode/minimax-m2
 temperature: 0.1
 tools:
   bash: true
