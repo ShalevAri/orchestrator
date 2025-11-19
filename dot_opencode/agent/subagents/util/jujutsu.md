@@ -1,7 +1,7 @@
 ---
 description: Jujutsu Version Control Agent
 mode: subagent
-model: opencode/minimax-m2
+model: opencode/kimi-k2-thinking-turbo
 temperature: 0.1
 tools:
   bash: true
