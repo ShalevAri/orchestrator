@@ -124,6 +124,7 @@ Orchestrator includes the following agents:
 #### Util
 
 - Commentor
+- Commit Message Generator
 - Jujutsu
 
 ## License
