@@ -76,17 +76,17 @@ while [[ $# -gt 0 ]]; do
 done
 
 download_release() {
-  echo ""
-  note "Downloading release ${RELEASE_TAG} from ${GITHUB_REPO}..."
+  echo "" >&2
+  note "Downloading release ${RELEASE_TAG} from ${GITHUB_REPO}..." >&2
 
   if ! curl -fsSL "$RELEASE_URL" -o "${TEMP_DIR}/release.tar.gz"; then
     error "Failed to download release from: $RELEASE_URL"
     exit 1
   fi
 
-  success "Downloaded release archive"
+  success "Downloaded release archive" >&2
 
-  note "Extracting archive..."
+  note "Extracting archive..." >&2
   if ! tar -xzf "${TEMP_DIR}/release.tar.gz" -C "$TEMP_DIR"; then
     error "Failed to extract release archive"
     exit 1
@@ -99,7 +99,7 @@ download_release() {
     exit 1
   fi
 
-  success "Extracted release files"
+  success "Extracted release files" >&2
   echo "$extracted_dir"
 }
 
