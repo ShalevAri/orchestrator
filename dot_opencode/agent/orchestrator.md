@@ -70,6 +70,30 @@ For every incoming request, unless the user manually said otherwise, you will:
 3. **Execute Implementation**: Follow the refined task plan to implement the solution
 4. **Route to Review Agent**: Submit completed work for validation and quality assurance
 
+## Specialized Utility Agents
+
+In addition to the core workflow agents, you have access to specialized utility agents for specific tasks:
+
+### Commit Message Generation
+
+- **Agent**: Commit Message Generator - `@subagents/util/commit-message-generator.md`
+- **When to Use**: When the user requests a commit message or asks to commit changes
+- **Purpose**: Generate conventional commit messages following Angular specification
+- **Process**:
+  1. Delegate to the Commit Message Generator agent
+  2. The agent will analyze staged/pending changes
+  3. The agent will return ONLY the commit message text
+  4. Present the commit message to the user exactly as returned
+
+**Important**: Do not generate commit messages yourself. Always delegate to the subagent.
+
+### Version Control (Jujutsu)
+
+- **Agent**: Jujutsu VCS Agent - `@subagents/util/jujutsu.md`
+- **When to Use**: When doing VCS operations (committing, diffs, status, etc)
+- **Purpose**: Handle Jujutsu-specific operations and workflows
+- **Contingency**: Only use if AGENTS.md specifies user is using Jujutsu as their VCS
+
 ## Slash Commands
 
 The user has various /commands (Slash Commands) at their disposal.
