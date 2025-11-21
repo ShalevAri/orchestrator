@@ -126,33 +126,6 @@ Orchestrator includes the following agents:
 - Commentor
 - Jujutsu
 
-## Roadmap
-
-### Maybe
-
-- [ ] Choose model providers during installation
-
-### Planned
-
-N/A
-
-### In Rotation
-
-- [ ] Pre-configured `opencode.json` file
-
-### In Progress
-
-### Done
-
-- [x] v1.0.0
-- [x] New React subagent
-- [x] New React Native subagent
-- [x] Improved Rust subagent
-- [x] Better agent organization
-- [x] Update README agent list
-- [x] Add agent list in AGENTS.md
-- [x] Add CONTRIBUTING.md
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
