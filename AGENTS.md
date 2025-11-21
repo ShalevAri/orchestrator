@@ -58,7 +58,12 @@
 #### Util
 
 - Commentor
+- Commit Message Generator
 - Jujutsu
+
+## Version Control
+
+- **VCS**: Jujutsu (jj)
 
 ## Diff checking
 
