@@ -11,7 +11,7 @@ readonly NC='\033[0m'
 readonly GITHUB_USER="ShalevAri"
 readonly GITHUB_REPO="orchestrator"
 readonly REPO_URL="https://github.com/${GITHUB_USER}/${GITHUB_REPO}.git"
-readonly GITHUB_TAG="${ORCHESTRATOR_VERSION:-v1.0.0}"
+readonly GITHUB_TAG="${ORCHESTRATOR_VERSION:-v2.0.0}"
 
 readonly TARGET_DIR="${PWD}/.opencode"
 readonly TEMP_DIR=$(mktemp -d) || { echo -e "${RED}ERR: Failed to create temp directory${NC}"; exit 1; }
@@ -46,17 +46,17 @@ prompt_user_choice() {
   local prompt="$1"
   local -n choices=$2
   local default_choice="${3:-1}"
-  
+
   echo ""
   echo "$prompt"
   for i in "${!choices[@]}"; do
     echo "  $((i + 1))) ${choices[$i]}"
   done
   echo ""
-  
+
   read -rp "Enter choice [1-${#choices[@]}]: " choice
   choice="${choice:-$default_choice}"
-  
+
   if ! [[ "$choice" =~ ^[0-9]+$ ]] || [ "$choice" -lt 1 ] || [ "$choice" -gt "${#choices[@]}" ]; then
     warning "Invalid choice '$choice'. Using default: $default_choice"
     echo "$default_choice"
@@ -69,13 +69,13 @@ handle_existing_directory() {
   if [ ! -d "$TARGET_DIR" ]; then
     return 0
   fi
-  
+
   warning "Installing/updating Orchestrator will override your existing .opencode directory."
   warning "This is expected behavior."
-  
+
   local options=("Abort" "Override" "Backup to .opencode.bak and install")
   local choice=$(prompt_user_choice "Please choose an option:" options)
-  
+
   case $choice in
     1)
       note "Installation aborted. No changes were made."
@@ -105,12 +105,12 @@ handle_existing_directory() {
 clone_repository() {
   note "Installing version: $GITHUB_TAG"
   note "Cloning Orchestrator into temporary directory..."
-  
+
   git clone --quiet --depth 1 --branch "$GITHUB_TAG" "$REPO_URL" "$TEMP_DIR" || {
     error "Failed to clone the Orchestrator repository"
     exit 1
   }
-  
+
   validate_repository
 }
 
@@ -119,7 +119,7 @@ select_provider() {
   local default_provider="$2"
   shift 2
   local providers=("$@")
-  
+
   local options=()
   for provider in "${providers[@]}"; do
     if [ "$provider" == "$default_provider" ]; then
@@ -128,9 +128,9 @@ select_provider() {
       options+=("$provider")
     fi
   done
-  
+
   local choice=$(prompt_user_choice "Select provider for $model_name:" options)
-  
+
   if [[ "$choice" =~ ^[0-9]+$ ]] && [ "$choice" -ge 1 ] && [ "$choice" -le "${#providers[@]}" ]; then
     echo "${providers[$((choice - 1))]}"
   else
@@ -141,7 +141,7 @@ select_provider() {
 
 get_provider_prefix() {
   local provider="$1"
-  
+
   case "$provider" in
     "OpenCode Zen")
       echo "opencode/"
@@ -167,19 +167,19 @@ get_provider_prefix() {
 
 configure_per_model_providers() {
   note "Configuring per-model providers..."
-  
+
   local claude_provider=$(select_provider "Claude models (claude-sonnet-4-5, claude-haiku-4-5)" "OpenCode Zen" "OpenCode Zen" "Anthropic")
   local claude_prefix=$(get_provider_prefix "$claude_provider")
-  
+
   local gpt_provider=$(select_provider "GPT models (gpt-5-codex)" "OpenCode Zen" "OpenCode Zen" "OpenAI")
   local gpt_prefix=$(get_provider_prefix "$gpt_provider")
-  
+
   local glm_provider=$(select_provider "GLM-4.6 models" "OpenCode Zen" "OpenCode Zen" "Z.ai")
   local glm_prefix=$(get_provider_prefix "$glm_provider")
-  
+
   local qwen_provider=$(select_provider "Qwen3-Coder models" "OpenCode Zen" "OpenCode Zen" "Other (specify manually)")
   local qwen_prefix=$(get_provider_prefix "$qwen_provider")
-  
+
   update_model_providers "$claude_prefix" "$gpt_prefix" "$glm_prefix" "$qwen_prefix"
   success "Updated all agent configurations with per-model providers"
 }
@@ -187,7 +187,7 @@ configure_per_model_providers() {
 configure_provider_mode() {
   local options=("OpenCode Zen for all models (default)" "Per-model provider configuration")
   local choice=$(prompt_user_choice "Select your preferred model provider configuration:" options)
-  
+
   case $choice in
     1)
       note "Using OpenCode Zen provider for all models..."
@@ -216,14 +216,14 @@ update_model_providers() {
   local gpt_prefix="$2"
   local glm_prefix="$3"
   local qwen_prefix="$4"
-  
+
   note "Updating model providers..."
-  
+
   if [ ! -d "$TARGET_DIR/agent" ]; then
     error "Agent directory not found at $TARGET_DIR/agent"
     exit 1
   fi
-  
+
   local file_count=0
   while IFS= read -r agent_file; do
     ((file_count++))
@@ -245,7 +245,7 @@ update_model_providers() {
       sed -i "s|^model: opencode/qwen|model: ${qwen_prefix}qwen|g" "$agent_file"
     fi
   done < <(find "$TARGET_DIR/agent" -name "*.md" -type f)
-  
+
   if [ "$file_count" -eq 0 ]; then
     warning "No agent files found to update"
   else
@@ -259,7 +259,7 @@ copy_opencode_preset() {
       warning "opencode.json already exists in this directory."
       local options=("Skip (keep existing)" "Override with preset")
       local choice=$(prompt_user_choice "What would you like to do?" options)
-      
+
       case $choice in
         1)
           note "Keeping existing opencode.json file."
@@ -274,7 +274,7 @@ copy_opencode_preset() {
           ;;
       esac
     fi
-    
+
     note "Setting up opencode.json file..."
     cp "$TEMP_DIR/opencode.preset.json" "${PWD}/opencode.json" || {
       warning "Failed to setup opencode.json"
