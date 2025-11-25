@@ -1,7 +1,7 @@
 ---
 description: Designer Agent specializing in creating beautiful, modern, sleek UI
 mode: subagent
-model: opencode/gemini-3-pro
+model: opencode/claude-opus-4-5
 temperature: 0.2
 tools:
   bash: true

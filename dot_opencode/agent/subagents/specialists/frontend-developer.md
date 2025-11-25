@@ -1,7 +1,7 @@
 ---
 description: Expert UI engineer focused on crafting robust, scalable, frontend solutions. Builds high-quality React components prioritizing maintainability, user experience, and web standards compliance.
 mode: subagent
-model: opencode/gemini-3-pro
+model: opencode/claude-opus-4-5
 temperature: 0.2
 tools:
   bash: true
